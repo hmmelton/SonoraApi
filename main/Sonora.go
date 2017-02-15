@@ -16,6 +16,7 @@ func main() {
 	router.HandleFunc("/recipe", GetRecipeEndpoint).Methods("GET")
 	router.HandleFunc("/recipe", PostRecipeEndpoint).Methods("POST")
 	router.HandleFunc("/recipe", DeleteRecipeEndpoint).Methods("DELETE")
+	router.HandleFunc("/recipe", UpdateRecipeEndpoint).Methods("PUT")
 	// Menu endpoints
 	router.HandleFunc("/menu", GetMenuEndpoint).Methods("GET")
 	router.HandleFunc("/menu", PostMenuEndpoint).Methods("POST")

@@ -17,7 +17,7 @@ func GetRecipeEndpoint(w http.ResponseWriter, req *http.Request)  {
 	params := req.URL.Query()
 
 	result := Recipe{}
-	err := Recipes.Find(bson.M{"user_id": params.Get("id")}).One(&result)
+	err := Recipes.Find(bson.M{"id": params.Get("id")}).One(&result)
 	if err != nil {
 		// There was an error -- return it to the sender, and exit
 		errorMessage := map[string]string{"error": err.Error()}
@@ -52,7 +52,19 @@ func PostRecipeEndpoint(w http.ResponseWriter, req *http.Request) {
 }
 
 func DeleteRecipeEndpoint(w http.ResponseWriter, req *http.Request) {
+	err := Recipes.Remove(bson.M{"featured": false})
+	if err != nil {
+		// Error encountered while removing item
+		json.NewEncoder(w).Encode(bson.M{"error": err.Error()})
+		return
+	}
 
+	// Item was removed
+	json.NewEncoder(w).Encode(bson.M{"success": "recipe deleted successfully"})
+}
+
+func UpdateRecipeEndpoint(w http.ResponseWriter, req *http.Request) {
+	json.NewEncoder(w).Encode(bson.M{"hey": "what's up?"})
 }
 
 /*

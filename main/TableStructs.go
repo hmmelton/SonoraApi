@@ -8,7 +8,7 @@ type (
 	}
 
 	Recipe struct {
-		Id				string			`json:"id,omitempty"`
+		Id				string			`json:"id"`
 		User_Id			string			`json:"user_id"`
 		First_Name		string			`json:"first_name"`
 		Last_Name		string			`json:"last_name"`
@@ -21,7 +21,7 @@ type (
 	}
 
 	Menu struct {
-		Id			string		`json:"id,omitempty"`
+		Id			string		`json:"id"`
 		UserId		string		`json:"user_id"`
 		Image		string		`json:"image"`
 		ProfImage	string		`json:"prof_image"`
